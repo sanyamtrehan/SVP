@@ -3,7 +3,7 @@ import { of, take, tap } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { MovieInfo } from './movies.modal';
+import { MovieInfo } from '../movies';
 
 @Injectable({ providedIn: 'root' })
 export class MoviesService {

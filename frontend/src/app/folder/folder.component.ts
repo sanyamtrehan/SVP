@@ -2,10 +2,10 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 
-import { MovieInfo } from '../movies.modal';
-import { FolderService } from './folder.service';
-import { zoomInUpAnimation } from '../../animations';
-import { MovieListComponent } from '../../movie-list';
+import { MovieInfo } from '../movies';
+import { FolderService } from '../folder';
+import { zoomInUpAnimation } from '../animations';
+import { MovieListComponent } from '../movie-list';
 
 @Component({
   selector: 'app-folder',

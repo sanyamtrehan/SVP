@@ -1,9 +1,9 @@
 import { of } from 'rxjs';
-import { ActivatedRouteSnapshot, ResolveFn, Router } from '@angular/router';
 import { inject } from '@angular/core';
-import { MoviesService } from '../movies.service';
-import { MovieInfo } from '../movies.modal';
-import { FolderService } from './folder.service';
+import { ActivatedRouteSnapshot, ResolveFn, Router } from '@angular/router';
+
+import { FolderService } from '../folder';
+import { MoviesService, MovieInfo } from '../movies';
 
 export const FolderResolver: ResolveFn<any> = (
   route: ActivatedRouteSnapshot

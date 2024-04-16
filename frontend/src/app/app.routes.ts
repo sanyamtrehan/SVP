@@ -8,4 +8,8 @@ export const routes: Routes = [
     loadChildren: () => import('./movies').then((r) => r.MoviesRoutes),
     resolve: [AppResolver],
   },
+  {
+    path: 'title',
+    loadChildren: () => import('./folder').then((r) => r.FolderRoutes),
+  },
 ];

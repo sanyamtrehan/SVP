@@ -1,7 +1,8 @@
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Component, HostBinding, Input } from '@angular/core';
-import { MovieInfo } from '../movies/movies.modal';
-import { Router } from '@angular/router';
+
+import { MovieInfo } from '../movies';
 
 @Component({
   selector: 'app-card',

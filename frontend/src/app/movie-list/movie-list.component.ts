@@ -1,8 +1,8 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
+import { MovieInfo } from '../movies';
 import { CardComponent } from '../card';
-import { CommonModule } from '@angular/common';
-import { MovieInfo } from '../movies/movies.modal';
 import { zoomInUpAnimation } from '../animations';
 
 @Component({
