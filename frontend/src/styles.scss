@@ -1,0 +1,115 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0f1010;
+  padding: 1.25rem 1.875rem;
+  color: #fff;
+}
+
+.genre-title {
+  font-size: 1.4vw;
+  font-weight: 400;
+  margin-bottom: 0.5em;
+  text-transform: capitalize;
+}
+
+.movies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4vw;
+}
+
+.movie {
+  position: relative;
+  width: 20%;
+  aspect-ratio: 100/56.25;
+  padding: 5.75% 1rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: grey;
+  cursor: pointer;
+  text-transform: capitalize;
+  font-size: clamp(11px, 1.5vw, 15px);
+  background-position: center;
+  background-size: cover;
+  transition: all 300ms;
+
+  @media (min-width: 1440px) {
+    width: 16.66666667%;
+    padding: 4.75% 1rem;
+  }
+
+  &::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    transition: all 300ms;
+    position: absolute;
+  }
+
+  &__name {
+    opacity: 0;
+    position: absolute;
+    bottom: -12%;
+    transform: scale(0.5);
+    width: 100%;
+    padding: 0 0.5rem;
+    z-index: 999;
+    transition: all 200ms;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    &--alt {
+      opacity: 1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      transform: translate(-50%, -50%);
+      transition: all 200ms;
+    }
+  }
+
+  &:hover {
+    z-index: 9999999;
+    transform: scale(1.25);
+    border-radius: 4px;
+    box-shadow: 0 0 15px -8px rgba(0, 0, 0, 0.55);
+  }
+
+  &:hover &__name {
+    bottom: 12.5%;
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  &:hover &__name--alt {
+    opacity: 0;
+  }
+
+  &:hover:before {
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  }
+}
+
+.inline-container {
+  display: inline-flex;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,6 @@
+<ng-container *ngFor="let movie of moviesInfo; let i = index">
+  <app-card
+    [movie]="movie"
+    [@zoomInUp]="{ value: '', params: { delay: i * 200 } }"
+  ></app-card>
+</ng-container>

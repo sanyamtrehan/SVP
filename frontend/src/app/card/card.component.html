@@ -1,0 +1,4 @@
+<ng-container *ngIf="movie">
+  <span class="movie__name">{{ movie.name }}</span>
+  <span *ngIf="!movie.icon" class="movie__name--alt">{{ movie.name }}</span>
+</ng-container>

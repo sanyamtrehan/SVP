@@ -1,0 +1,12 @@
+<ng-container *ngIf="folder$ | async as folder">
+  <h2 class="folder-title">{{ folder.name }}</h2>
+
+  <ng-container *ngFor="let child of foldersList">
+    <div *ngIf="child.children && child.children.length" class="sub-folders">
+      <h4 class="genre-title">{{ child.name }}</h4>
+      <app-movie-list [moviesInfo]="child.children"></app-movie-list>
+    </div>
+  </ng-container>
+
+  <app-movie-list [moviesInfo]="othersList"></app-movie-list>
+</ng-container>
