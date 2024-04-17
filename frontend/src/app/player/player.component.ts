@@ -78,6 +78,10 @@ export class PlayerComponent implements OnInit {
 
   skipBy(seconds: number) {
     this.videoEl.currentTime += seconds;
+    this.updateProgressBar();
+  }
+
+  updateProgressBar() {
     const percent = this.videoEl.currentTime / this.videoEl.duration;
     this.setProgressPercentage(percent);
   }

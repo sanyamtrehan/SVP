@@ -66,6 +66,7 @@
   *ngIf="videoUrl"
   class="svp-player svp-player--show"
   (click)="togglePlaying()"
+  (timeupdate)="updateProgressBar()"
   autoplay
 >
   <source [src]="videoUrl" type="video/mp4" />
