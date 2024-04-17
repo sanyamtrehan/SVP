@@ -39,3 +39,15 @@ $ npm run start
 ```
 
 access the running project as [localhost](http//:localhost:4200/)
+
+### Intranet usage
+
+to make use of the intra-network sharing feature. start the server by using the command
+
+```shell
+$ npm run start:host
+```
+
+- check the terminal for the network ip address for accessing the portal
+- make sure that the other device is also using the same network
+- access the portal on other device by using the network address
