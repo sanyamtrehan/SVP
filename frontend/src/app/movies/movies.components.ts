@@ -10,12 +10,10 @@ import { MovieListComponent } from '../movie-list';
   standalone: true,
   imports: [MovieListComponent],
   templateUrl: './movies.component.html',
-  styleUrl: './movies.component.scss',
   animations: [zoomInUpAnimation],
 })
 export class MoviesComponent {
   moviesInfo = this.moviesService.moviesInfo;
-  host = location.host;
 
   constructor(
     private readonly router: Router,

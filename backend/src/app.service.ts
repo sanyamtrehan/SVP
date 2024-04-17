@@ -35,14 +35,12 @@ export class AppService {
     }
   }
 
-  getMovie(req: Request, res: Response) {
+  getMovie(movieLocation: string, req: Request, res: Response) {
     const range = req.headers.range;
-    if (!range) {
+    if (!range || !movieLocation) {
       return 'Range Not Found';
     }
 
-    console.log(range);
-    const movieLocation = `${this.moviesFolder}/one piece/season 5/03 - Beyond the Rainbow/139 - Legend of the Rainbow Mist! Old Man Henzo of Luluka Island!.mkv`;
     const stat = fs.statSync(movieLocation);
     const parts = range.replace(/bytes=/, '').split('-');
     const start = parseInt(parts[0], 10);

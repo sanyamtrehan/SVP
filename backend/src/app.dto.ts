@@ -1,3 +1,3 @@
-export class IconPathDto {
+export class MovieTitleDto {
   path: string;
 }

@@ -1,7 +1,8 @@
-import { Controller, Get, Query, Req, Res } from '@nestjs/common';
-import { AppService } from './app.service';
-import { IconPathDto } from './app.dto';
 import { Request, Response } from 'express';
+import { Controller, Get, Query, Req, Res } from '@nestjs/common';
+
+import { AppService } from './app.service';
+import { MovieTitleDto } from './app.dto';
 
 @Controller()
 export class AppController {
@@ -17,13 +18,12 @@ export class AppController {
     return this.appService.getMoviesInfo();
   }
 
-  @Get('movie-icon')
-  getMovieIcon(@Query() { path }: IconPathDto) {
-    return this.appService.getMovieIcon(path);
-  }
-
   @Get('movie')
-  getMovie(@Req() req: Request, @Res() res: Response) {
-    return this.appService.getMovie(req, res);
+  getMovie(
+    @Query() { path }: MovieTitleDto,
+    @Req() req: Request,
+    @Res() res: Response,
+  ) {
+    return this.appService.getMovie(path, req, res);
   }
 }

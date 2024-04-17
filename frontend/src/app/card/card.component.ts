@@ -46,10 +46,8 @@ export class CardComponent {
 
   private navigateTo() {
     const { path, type } = this.movie;
-    if (type === 'file') {
-      return;
-    }
     const id = path.substring(path.indexOf('anime/') + 6);
-    this.router.navigate(['/title'], { queryParams: { id } });
+    const routePath = type === 'file' ? '/watch' : '/title';
+    this.router.navigate([routePath], { queryParams: { id } });
   }
 }

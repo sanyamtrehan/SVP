@@ -1,0 +1,86 @@
+<div *ngIf="file$ | async as file" #ControlsRef class="controls controls--show">
+  <!-- progress bar -->
+  <div class="timeline">
+    <div
+      #ProgressRef
+      class="progress-bar"
+      (click)="handleTimelineProgress($event)"
+    >
+      <div class="thumb-indicator"></div>
+    </div>
+    <span class="remaining-time">{{ getRemainingTime() }}</span>
+  </div>
+
+  <!-- controls -->
+  <div class="controls__wrapper">
+    <div class="controls__primary">
+      <div class="control" (click)="togglePlaying()">
+        <img
+          class="control__btn"
+          src="/assets/{{ isPlaying ? 'pause' : 'play' }}.svg"
+          [alt]="isPlaying ? 'pause button' : 'play button'"
+        />
+      </div>
+
+      <div class="control" (click)="skipBy(-10)">
+        <img
+          class="control__btn"
+          src="/assets/backward.svg"
+          alt="backwards by 10 seconds"
+        />
+      </div>
+
+      <div class="control" (click)="skipBy(10)">
+        <img
+          class="control__btn"
+          src="/assets/forward.svg"
+          alt="forwards by 10 seconds"
+        />
+      </div>
+    </div>
+
+    <span class="movie-name">{{ file.name }}</span>
+
+    <div class="controls__primary" [matMenuTriggerFor]="playbackSpeedMenu">
+      <div class="control">
+        <img
+          class="control__btn"
+          src="/assets/speed.svg"
+          alt="playback speed of the video"
+        />
+      </div>
+
+      <div class="control" (click)="toggleFullScreen()">
+        <img
+          class="control__btn"
+          src="/assets/{{ isFullscreen ? 'smallscreen' : 'fullscreen' }}.svg"
+          [alt]="isFullscreen ? 'disable full screen' : 'enable full screen'"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<video
+  #VideoElRef
+  *ngIf="videoUrl"
+  class="svp-player svp-player--show"
+  (click)="togglePlaying()"
+>
+  <source [src]="videoUrl" type="video/mp4" />
+</video>
+
+<mat-menu class="playback-menu" #playbackSpeedMenu="matMenu" yPosition="above">
+  <span class="playback-menu__title">Playback Speed</span>
+  <div class="playback-menu__controls">
+    <div
+      *ngFor="let speed of playbackOptions; let i = index"
+      class="playback-menu__playback-control"
+      [ngClass]="{ 'selected-speed': i === playbackSpeedIndex }"
+      (click)="togglePlaybackSpeed(i)"
+    >
+      <span class="line"></span>
+      <div class="text">{{ speed }}x</div>
+    </div>
+  </div>
+</mat-menu>

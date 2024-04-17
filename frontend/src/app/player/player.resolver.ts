@@ -2,11 +2,11 @@ import { of } from 'rxjs';
 import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, ResolveFn, Router } from '@angular/router';
 
-import { FolderService } from '../folder';
+import { MoviesService } from '../movies';
 import { findMovieInfoById } from '../utils';
-import { MoviesService, MovieInfo } from '../movies';
+import { PlayerService } from './player.service';
 
-export const FolderResolver: ResolveFn<any> = (
+export const playerResolver: ResolveFn<any> = (
   route: ActivatedRouteSnapshot
 ) => {
   const id = route.queryParams['id'];
@@ -15,13 +15,13 @@ export const FolderResolver: ResolveFn<any> = (
   }
 
   const moviesInfo = inject(MoviesService).moviesInfo;
-  const folder = findMovieInfoById(moviesInfo, id);
-  if (!folder) {
+  const file = findMovieInfoById(moviesInfo, id);
+  if (!file) {
     goToMain();
     return of(false);
   }
 
-  inject(FolderService).folder$.next(folder);
+  inject(PlayerService).file$.next(file);
   return of(true);
 };
 
